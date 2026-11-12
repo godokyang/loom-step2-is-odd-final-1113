@@ -17,6 +17,8 @@ work_items:
     completion: README 包含 isOddInteger 示例代码及两种导出的行为差异说明
     effort: 0.4
     depends_on: []
+    status: done
+    self_check: README.md 已含 require 解构 isOddInteger 的示例（奇数 true、-0 false、大整数/小数/NaN/Infinity/字符串/null/undefined false）及两者输入类型与抛错行为差异对照表；npm test 全部通过。
 ---
 # 新增 isOddInteger 安全判断导出
 
