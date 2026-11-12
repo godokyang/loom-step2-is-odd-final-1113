@@ -26,6 +26,43 @@ console.log(isOdd(0)); //=> false
 console.log(isOdd(2)); //=> false
 ```
 
+## isOddInteger
+
+`isOddInteger` is a named export that only works with safe integer `number` values and never throws.
+
+```js
+const { isOddInteger } = require('is-odd');
+
+// odd integers => true
+console.log(isOddInteger(1)); //=> true
+console.log(isOddInteger(-3)); //=> true
+
+// even integers => false
+console.log(isOddInteger(0)); //=> false
+console.log(isOddInteger(-0)); //=> false
+console.log(isOddInteger(2)); //=> false
+
+// anything else => false (never throws)
+console.log(isOddInteger(2 ** 60 + 1)); //=> false (exceeds MAX_SAFE_INTEGER)
+console.log(isOddInteger(1.5)); //=> false
+console.log(isOddInteger(NaN)); //=> false
+console.log(isOddInteger(Infinity)); //=> false
+console.log(isOddInteger('1')); //=> false
+console.log(isOddInteger(null)); //=> false
+console.log(isOddInteger()); //=> false
+```
+
+### `isOdd` vs `isOddInteger`
+
+| | `isOdd` (default export) | `isOddInteger` (named export) |
+| --- | --- | --- |
+| Input types | numbers **and** numeric strings | integers within the safe range only |
+| Invalid input | **throws** (`TypeError` / `Error`) | returns `false`, never throws |
+| Odd integers | `true` | `true` |
+| Even integers | `false` | `false` (including `-0`) |
+| Unsafe large integers | throws | `false` |
+
+
 ## About
 
 <details>

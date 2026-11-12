@@ -2,8 +2,22 @@
 loom_kind: requirement
 id: 7e2b1c4a-3f8d-4e6a-9c15-b0a82d5f7e21
 title: 新增 isOddInteger 安全判断导出
+work_items:
+  - id: wi-impl
+    title: 实现 isOddInteger 导出并补 mocha 测试
+    deliverable: index.js（新增 module.exports.isOddInteger）与 test.js 中 isOddInteger 测试
+    completion: node 中 require('./') 同时拿到 isOdd 与 isOddInteger；规则用例全部符合；npm test 全部通过
+    effort: 0.6
+    depends_on: []
+    status: done
+    self_check: npm test 10 passing（原 isOdd 3 项 + isOddInteger 7 项）；node 实测：奇数 true、偶数与 -0 false、2**60+1 / 1.5 / NaN / Infinity / '1' / null / undefined 均 false 且不抛错；默认导出仍为 isOdd 函数。已改 index.js、test.js、README.md。git commit 因 .git 位于需求工作区外被沙盒拒绝（index.lock Operation not permitted），变更保留在工作区待提交。
+  - id: wi-readme
+    title: README 增补 isOddInteger 用法说明
+    deliverable: README.md 增补 isOddInteger 用法与 isOdd 区别说明
+    completion: README 包含 isOddInteger 示例代码及两种导出的行为差异说明
+    effort: 0.4
+    depends_on: []
 ---
-
 # 新增 isOddInteger 安全判断导出
 
 ## 目标

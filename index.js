@@ -23,3 +23,10 @@ module.exports = function isOdd(value) {
   return (n % 2) === 1;
 };
 
+module.exports.isOddInteger = function isOddInteger(value) {
+  if (typeof value !== 'number' || !Number.isSafeInteger(value)) {
+    return false;
+  }
+  return (value % 2) !== 0;
+};
+
